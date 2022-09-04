@@ -2,7 +2,6 @@
 import { onMounted, ref } from 'vue';
 import repoJson from './repos.json';
 import RepoService from './services/git.service'
-import GitCard from './components/GitCard.vue'
 
 const repos = ref([])
 
@@ -25,7 +24,7 @@ onMounted(() => {
       </div>
     </nav>
     <div class="body" v-for="r in repoJson" :key="r">
-      <GitCard :path="r" />
+      <router-view />
     </div>
   </main>
 </template>
@@ -48,6 +47,9 @@ nav
   flex-direction: row
   justify-content: space-between
   padding: 8px 14px
+  position: sticky
+  top: 0px
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 
 .nav-item
   text-decoration: none

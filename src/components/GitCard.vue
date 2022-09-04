@@ -38,7 +38,7 @@ onMounted(() => {
   const { path } = props;
   gitService.getRepoDetails(path).then((e) => {
     repo.value = e
-    gitService.getRepoSource(path, 'readme.md').then(q => mainReadme)
+    gitService.getRepoSource(e.full_name, 'README.md').then(q => mainReadme)
   });
 });
 </script>
