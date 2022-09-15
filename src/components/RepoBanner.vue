@@ -1,5 +1,5 @@
 <template>
-  <header class="repo-banner">
+  <header class="repo-banner" :class="{ small: isTouchingTop }" ref="root">
     <div class="title">
       <router-link
         :to="{ name: 'repoPage', params: { repo: $route.params.repo } }"
@@ -18,9 +18,11 @@
     </div>
     <div class="footer">
       <div class="breadcrumbs">
-        <a href="a" class="index h3">Table of contents</a>
+        <a href="#" class="index h3"><span class="material-symbols-outlined">menu</span></a>
+        <span class="material-symbols-outlined" style="font-size: 24px">
+        chevron_right
+        </span>
         <span class="path h3">
-          >
           <span v-for="p in path" :key="p">
             <a class="h3" href="#">{{ p }}</a
             >/
@@ -34,8 +36,10 @@
 
 <script lang="ts" setup>
 import type { GitDetails } from "@/services/models/GitDetails";
-import { computed, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
+const root = ref<HTMLElement>()
+const isTouchingTop = ref(false)
 const props = defineProps<{
   repo: GitDetails;
   file: string;
@@ -50,10 +54,34 @@ const path = computed(() => {
 });
 
 const filename = computed(() => parts[parts.length - 1]);
+
+onMounted(() => {
+  window.addEventListener("scroll", onScrollHandler);
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", onScrollHandler);
+})
+
+let scrollEventTimeout = 0;
+const onScrollHandler = () => {
+  if (scrollEventTimeout) {
+    return
+  }
+  scrollEventTimeout = setTimeout(() => {
+    console.log(root.value?.offsetTop,  window.pageYOffset)
+    isTouchingTop.value = ((root.value?.offsetTop - window.pageYOffset) < 10);
+    clearTimeout(scrollEventTimeout);
+    scrollEventTimeout = 0;
+  }, 100);
+}
+
 </script>
 
 <style lang="sass">
 .repo-banner
+  *
+    transition: all .1s ease-in
   padding: 16px 8px
   background-color: $primary-two
   color: $highlight
@@ -73,6 +101,27 @@ const filename = computed(() => parts[parts.length - 1]);
     .breadcrumbs
       display: flex
       padding: 16px
+      align-items: center
+      .index
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        text-decoration: none
+        .material-symbols-outlined
+          font-size: 30px
+          font-weight: 700
       .path
         margin-left: 4px
+  &.small
+    margin-bottom: 100px
+    .description
+      display: none
+    .footer
+      margin: 4px
+      .breadcrumbs
+        padding: 4px
+        *
+          font-size: small
+        
 </style>

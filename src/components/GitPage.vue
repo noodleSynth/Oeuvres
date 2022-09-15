@@ -29,4 +29,5 @@ onMounted(() => {
 <style lang="sass">
 .doc
   margin: 32px
+  color: $highlight
 </style>

@@ -23,7 +23,7 @@ onMounted(() => {
         </a>
       </div>
     </nav>
-    <div class="body" v-for="r in repoJson" :key="r">
+    <div class="body">
       <router-view />
     </div>
   </main>
