@@ -18,8 +18,11 @@
     </div>
     <div class="footer">
       <div class="breadcrumbs">
-        <a href="#" class="index h3"><span class="material-symbols-outlined">menu</span></a>
-        <span class="material-symbols-outlined" style="font-size: 24px">
+        <label  @click="drawerState = !drawerState" class="index h3 button">
+          <span v-if="!showIndex" class="material-symbols-outlined">close</span>
+          <span v-else class="material-symbols-outlined">menu</span>
+        </label>
+        <span class="material-symbols-outlined" style="font-size: 24px" >
         chevron_right
         </span>
         <span class="path h3">
@@ -31,6 +34,9 @@
         </span>
       </div>
     </div>
+    <aside :open="showIndex">
+      Over here
+    </aside>
   </header>
 </template>
 
@@ -40,6 +46,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
 const root = ref<HTMLElement>()
 const isTouchingTop = ref(false)
+const drawerState = ref(false)
 const props = defineProps<{
   repo: GitDetails;
   file: string;
@@ -55,31 +62,35 @@ const path = computed(() => {
 
 const filename = computed(() => parts[parts.length - 1]);
 
+const showIndex = computed(() => drawerState.value || undefined)
+
+let scrollEventTimeout = 0;
 onMounted(() => {
   window.addEventListener("scroll", onScrollHandler);
+  scrollEventTimeout = 0
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", onScrollHandler);
 })
 
-let scrollEventTimeout = 0;
 const onScrollHandler = () => {
-  if (scrollEventTimeout) {
+  if (scrollEventTimeout != 0) {
     return
   }
   scrollEventTimeout = setTimeout(() => {
     console.log(root.value?.offsetTop,  window.pageYOffset)
-    isTouchingTop.value = ((root.value?.offsetTop - window.pageYOffset) < 10);
+    isTouchingTop.value = root.value?.offsetTop > 10
     clearTimeout(scrollEventTimeout);
     scrollEventTimeout = 0;
-  }, 100);
+  }, 200);
 }
 
 </script>
 
 <style lang="sass">
 .repo-banner
+  z-index: 999
   *
     transition: all .1s ease-in
   padding: 16px 8px
@@ -92,6 +103,8 @@ const onScrollHandler = () => {
     display: flex
     justify-content: space-between
   .discription
+    transform-origin: center top
+    transform: scaleY(1)
     padding: auto 8px
   .footer
     display: flex
@@ -108,6 +121,7 @@ const onScrollHandler = () => {
         align-items: center
         justify-content: center
         text-decoration: none
+        color: $highlight-warm
         .material-symbols-outlined
           font-size: 30px
           font-weight: 700
@@ -116,12 +130,31 @@ const onScrollHandler = () => {
   &.small
     margin-bottom: 100px
     .description
-      display: none
+      transform: scaleY(0)
     .footer
       margin: 4px
       .breadcrumbs
         padding: 4px
         *
           font-size: small
-        
+  aside
+    position: absolute
+    left: 0px
+    top: 100%
+    height: calc(100vh - 140px)
+    background-color: $primary-two
+    width: min-content
+    width: 200px
+    overflow: hidden
+    // background: linear-gradient(45deg, blue, red)
+    // transform: scaleX(0)
+    transform-origin: center left
+    box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.25)
+    &[open]
+      // transform: scaleX(1)
+      width: 0px
+
+.button
+  border: none
+  user-select: none
 </style>

@@ -30,4 +30,7 @@ onMounted(() => {
 .doc
   margin: 32px
   color: $highlight
+  background-color: $primary-two
+  margin: auto auto
+  max-width: 1000px
 </style>

@@ -39,8 +39,15 @@ nav
 
 .repo_page
   min-width: 100vw
+  position: sticky
+  top: 0px
+  // position: relative
   body
-    max-width: 1000px
-    margin: 20px auto
-    background-color: $primary-two
+    width: 100%
+    margin: 20px 0px
+    // background-color: $primary-two
+    display: flex
+    position: sticky
+    flex-direction: row
+    justify-content: space-between
 </style>
