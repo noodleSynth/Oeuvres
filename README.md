@@ -1,46 +1,24 @@
-# oeuvres
+# Oeuvres
 
-This template should help get you started developing with Vue 3 in Vite.
+Whats an [Oeuvre?](https://www.oxfordreference.com/view/10.1093/oi/authority.20110803100246262#:~:text=The%20French%20word%20for%20a,writer's%20principal%20work%20or%20masterpiece.)
 
-## Recommended IDE Setup
+## Motivation
+I need a way to keep track of the things I do. This project serves exactly that purpose.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+To showcase and serve as documentation of my `Oeuvre`
 
-## Type Support for `.vue` Imports in TS
+## Whats in this repo?
+The frontend for the project.
+- The Vue frontend
+- for now...
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+## How to run it?
+Youll need the backend for it to render the markdown at all.
+But it youre committed to seeing it try and churn:
+- You will need to install [NPM](https://www.npmjs.com/)
+- Clone the repo into your desired directory
+- Navigate to it using your favorite terminal (bash?)
+- Run `npm i`
+- Run `npm run serve`
+- That should do it, the page should be visible on localhost
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
