@@ -14,7 +14,7 @@ The frontend for the project.
 
 ## How to run it?
 Youll need the backend for it to render the markdown at all.
-But it youre committed to seeing it try and churn:
+But if you're committed to seeing it try and churn:
 - You will need to install [NPM](https://www.npmjs.com/)
 - Clone the repo into your desired directory
 - Navigate to it using your favorite terminal (bash?)

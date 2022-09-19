@@ -1,3 +1,3 @@
 # Index page for Oeuvres
 
-## [Readme](./README.md)
+## [Readme](README.md)
