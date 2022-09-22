@@ -19,7 +19,7 @@ const doc = ref<string>()
 onMounted(() => {
   gitService.getMarkupFor(props.repo.full_name, props.file).then(r => {
     doc.value = r;
-    console.log(r)
+    // console.log(r)
   })
 })
 
@@ -28,9 +28,10 @@ onMounted(() => {
 
 <style lang="sass">
 .doc
-  margin: 32px
   color: $highlight
   background-color: $primary-two
   margin: auto auto
   max-width: 1000px
+  padding: 16px
+
 </style>

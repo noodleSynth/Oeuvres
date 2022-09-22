@@ -1,8 +1,8 @@
 <template>
-  <section v-if="repo" class="repo_page">
-    <RepoBanner :repo="repo" :file='currentView'/>
+  <section v-if="repoDetail" class="repo_page">
+    <RepoBanner :repo="repoDetail" :file="'README.md'"/>
     <body>
-      <GitPage :repo="repo" :file="currentView" />
+      <GitPage :repo="repoDetail" :file="'README.md'" />
     </body>
   </section>
 </template>
@@ -16,21 +16,26 @@ import RepoBanner from "../components/RepoBanner.vue";
 import GitPage from "../components/GitPage.vue";
 
 const route = useRoute()
-const repo = ref<GitDetails>()
+const repoDetail = ref<GitDetails>()
+
+const { file, repo } = route.params
+
 console.log(route.params)
 
-const repoName = `noodleSynth/${route.params.repo}`
+const repoName = `noodleSynth/${repo}`
 
 const readem = ref<string>()
 const index = ref<string>()
 
 onMounted(() => {
   gitService.getRepoDetails(repoName).then(e => {
-    repo.value = e;
+    repoDetail.value = e;
   });
 });
 
-const currentView = computed(() => route.params.file.length === 0 ? "README.md" : route.params.file)
+console.log(route.params)
+
+// const currentFile = computed(() => )
 
 </script>
 <style lang="sass">
@@ -43,6 +48,7 @@ nav
   top: 0px
   // position: relative
   body
+    padding-top: 140px
     width: 100%
     margin: 20px 0px
     // background-color: $primary-two

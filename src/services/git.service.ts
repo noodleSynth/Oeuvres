@@ -16,6 +16,7 @@ class GitService {
     ).then((resp) => resp.text());
   }
   getMarkupFor(repoName: string, filename: string): Promise<string> {
+    console.log(repoName)
     return fetch(
       `${
         import.meta.env.VITE_BACKEND_URL
@@ -30,9 +31,9 @@ class GitService {
       resp.text()).then(html => {
 
         // Convert the HTML string into a document object
-        var parser = new DOMParser();
-        var doc = parser.parseFromString(html, 'text/html');
-        console.log(html, doc)
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        // console.log(html, doc)
         return html
       })
   }
