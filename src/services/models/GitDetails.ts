@@ -65,7 +65,7 @@ export interface GitDetails {
   releases_url: string;
   deployments_url: string;
   created_at: string;
-  updated_at: Date;
+  updated_at: string;
   pushed_at: string;
   git_url: string;
   ssh_url: string;

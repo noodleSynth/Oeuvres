@@ -1,8 +1,11 @@
 import type { GitDetails } from "./models/GitDetails";
 
 class GitService {
+  getRepos(): Promise<GitDetails[]> {
+    return fetch(`https://api.github.com/users/${import.meta.env.VITE_GIT_USER}/repos`).then(e => e.json())
+  }
   getRepoDetails(repo: string): Promise<GitDetails> {
-    return fetch(`https://api.github.com/repos/${repo}`)
+    return fetch(`https://api.github.com/repos/${import.meta.env.VITE_GIT_USER}/${repo}`)
       .then((resp) => {
         return resp.json();
       })

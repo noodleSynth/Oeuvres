@@ -22,7 +22,7 @@ const { file, repo } = route.params
 
 console.log(route.params)
 
-const repoName = `noodleSynth/${repo}`
+const repoName = repo
 
 const readem = ref<string>()
 const index = ref<string>()

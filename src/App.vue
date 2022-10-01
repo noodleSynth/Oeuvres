@@ -1,15 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import repoJson from './repos.json';
-import RepoService from './services/git.service'
 
-const repos = ref([])
-
-onMounted(() => {
-  repoJson.forEach((r) => {
-    RepoService.getRepoDetails(r).then(rj => repos.value.push(rj))
-  })
-})
 </script>
 
 <template>

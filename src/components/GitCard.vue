@@ -1,46 +1,27 @@
 <template>
   <div class="git card">
-    <template v-if="repo">
       <div class="header">
-        <a class="h2 title">{{repo.name}}</a>
+        <router-link :to="{name: 'repo', params: { repo: repo.name }}" class="h2 title">{{ repo.name }}</router-link>
         <div class="submenu">
           <a :href="repo.html_url"><i class="fa-brands fa-github"></i></a>
-          <span class="datetime">{{formatDate(repo.updated_at)}}</span>
+          <span class="datetime">{{ formatDate(repo.updated_at) }}</span>
         </div>
       </div>
-      <div class="body">
-        {{repo.description}}
-        <p>
-          {{mainReadme}}
-        </p>
+      <div class="body" v-if="repo.description">
+        {{ repo.description }}
       </div>
-    </template>
-    <template v-else>
-      Loading...
-    </template>
   </div>
 </template>
 
 <script lang="ts" setup>
-import gitService from "@/services/git.service";
-import { onMounted, ref } from "vue-demi";
-import { formatDate } from '@/utils/Format'
+import { formatDate } from "@/utils/Format";
 import type { GitDetails } from "@/services/models/GitDetails";
 
-const repo = ref<GitDetails>();
-const mainReadme = ref<string>()
 
 const props = defineProps<{
-  path: string;
+  repo: GitDetails;
 }>();
 
-onMounted(() => {
-  const { path } = props;
-  gitService.getRepoDetails(path).then((e) => {
-    repo.value = e
-    gitService.getRepoSource(e.full_name, 'README.md').then(q => mainReadme)
-  });
-});
 </script>
 
 <style lang="sass">
@@ -50,6 +31,7 @@ onMounted(() => {
   width: min-content
   overflow: hidden
   min-width: 275px
+  margin: 8px
   .header
     background-color: $primary-three
     padding: 8px

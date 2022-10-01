@@ -4,7 +4,7 @@
       <div class="repo-banner">
         <div class="title">
           <router-link
-            :to="{ name: 'repoPage', params: { repo: $route.params.repo } }"
+            :to="{ name: 'repo', params: { repo: $route.params.repo } }"
             class="nav-item h1"
           >
             {{ repo.name }}
