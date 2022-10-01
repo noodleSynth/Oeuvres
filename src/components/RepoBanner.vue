@@ -61,6 +61,8 @@ const props = defineProps<{
 
 const repo = ref(props.repo);
 
+const path : string[]= []
+
 // const path = computed(() => {
 //   return parts.slice(0, parts.length - 1);
 // });
@@ -77,6 +79,7 @@ onMounted(() => {
 })
 
 watch(() => root.value?.offsetHeight, (v) => {
+  // @ts-ignore
   initialHeight.value = Math.max(v, initialHeight.value)
 })
 
@@ -91,6 +94,7 @@ const onScrollHandler = () => {
     return
   }
   scrollEventTimeout = setTimeout(() => {
+    if(!root.value) return
     console.log(root.value?.offsetTop,  window.pageYOffset, root.value?.offsetTop -  window.pageYOffset)
     isTouchingTop.value = !(root.value?.getBoundingClientRect().top > 0)
     initialHeight.value = Math.max(root.value?.offsetHeight, initialHeight.value)

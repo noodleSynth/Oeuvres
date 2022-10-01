@@ -22,7 +22,7 @@ const { file, repo } = route.params
 
 console.log(route.params)
 
-const repoName = repo
+const repoName = repo as string
 
 const readem = ref<string>()
 const index = ref<string>()
