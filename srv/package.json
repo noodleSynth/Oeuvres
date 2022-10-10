@@ -1,14 +1,16 @@
 {
-  "name": "oeuvres_express_backend",
-  "version": "1.0.0",
-  "description": "A backend for a frontend",
-  "main": "index.js",
+  "name": "srv",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "serve": "node index.js"
+    "start": "node ./bin/www"
   },
-  "author": "Noodle",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1"
   }
 }

@@ -21,9 +21,7 @@ class GitService {
   getMarkupFor(repoName: string, filename: string): Promise<string> {
     console.log(repoName)
     return fetch(
-      `${
-        import.meta.env.VITE_BACKEND_URL
-      }/markdown/${repoName}/master/${filename}`,
+      `/api/markdown/${repoName}/master/${filename}`,
       {
         headers: {
           "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Access-Control-Allow-Headers",
