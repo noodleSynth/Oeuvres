@@ -1,0 +1,14 @@
+{
+  "name": "oeuvres_express_backend",
+  "version": "1.0.0",
+  "description": "A backend for a frontend",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node index.js"
+  },
+  "author": "Noodle",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
