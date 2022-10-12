@@ -1,3 +1,0 @@
-# Index
-
-## [Readme](README.md)
