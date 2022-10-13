@@ -3,7 +3,8 @@ const path = require('path')
 const fs = require('fs')
 const { Octokit } = require('octokit')
 const { createAppAuth } = require("@octokit/auth-app")
-const privateKey = () => fs.readFileSync(path.join(__dirname, '../private_key.pem')).toString('utf8')
+
+const privateKey = () => process.env.GITHUB_SECRET || fs.readFileSync(path.join(__dirname, '../private_key.pem')).toString('utf8')
 
 const octokit = new Octokit({
   authStrategy: createAppAuth,
