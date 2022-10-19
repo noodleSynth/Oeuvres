@@ -16,7 +16,7 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: "../srv/views"
+    outDir: "../build"
   },
   css: {
     preprocessorOptions: {
