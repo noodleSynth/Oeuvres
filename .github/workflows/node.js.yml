@@ -31,11 +31,12 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: sh build.sh
+    - run: npm ci
+    - run: npm run build --if-present
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
-        path: ./build
+        path: ./dist
     
   deploy:
     environment:
