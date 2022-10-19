@@ -1,15 +1,20 @@
 <template>
   <div class="git card">
+    <div class="repo-links">
+      <a class="repo-link" title="View on git" :href="repo.html_url"><i class="fa-brands fa-github"></i></a>
+      <router-link class="repo-link" title="View page" :to="{name: 'repo', params: { repo: repo.name }}"><i class="fa-solid fa-eye"></i> </router-link>
+    </div>
+    <div class="body">
       <div class="header">
         <router-link :to="{name: 'repo', params: { repo: repo.name }}" class="h2 title">{{ repo.name }}</router-link>
         <div class="submenu">
-          <a :href="repo.html_url"><i class="fa-brands fa-github"></i></a>
           <span class="datetime">{{ formatDate(repo.updated_at) }}</span>
         </div>
       </div>
-      <div class="body" v-if="repo.description">
+      <p class="body" v-if="repo.description">
         {{ repo.description }}
-      </div>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -22,6 +27,8 @@ const props = defineProps<{
   repo: GitDetails;
 }>();
 
+const expantion_uid = crypto.randomUUID()
+
 </script>
 
 <style lang="sass">
@@ -29,29 +36,52 @@ const props = defineProps<{
   border: solid 1px $active
   border-radius: 8px
   width: min-content
-  overflow: hidden
   min-width: 275px
   margin: 8px
-  .header
-    background-color: $primary-three
-    padding: 8px
-    .title
+  display: flex
+  flex-direction: column
+  position: relative
+  .repo-links
+    position: absolute
+    margin-top: -2.2em
+    display: flex
+    justify-content: flex-end
+    width: 100%
+    .repo-link
+      background-color: $primary-three
+      padding: .3em
+      font-size: 1.5em
+      margin: .2em
+      border-radius: 100%
+      border: solid $highlight
+      width: min-content
+  .body
+    overflow: hidden
+    .header
+      background-color: $primary-three
+      padding: 8px
+      border-radius: 8px
+      .title
+        color: white
+        text-decoration: none
+        margin-right: 1em
+      .submenu
+        padding: 4px
+        display: flex
+        a
+          font-size: 20px
+          &:hover
+            color: $highlight
+        &>*
+          margin: auto 5px
+          &:first-of-type
+            margin-left: 0px
+        .datetime
+          color: $highlight-cold
+          @extend .header-detail
+    &>.body
       color: white
-    .submenu
-      padding: 4px
-      display: flex
-      a
-        font-size: 20px
-        &:hover
-          color: $highlight
-      &>*
-        margin: auto 5px
-        &:first-of-type
-          margin-left: 0px
-      .datetime
-        color: $highlight-cold
-        @extend .header-detail
-  &>.body
-    color: white
-    padding: 8px 16px
+      padding: 8px 16px
+      position: relative
+
 </style>

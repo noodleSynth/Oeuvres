@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div class="repo-list">
     <GitCard v-for="repo in repos" :repo="repo" :key="repo.url" />
   </div>
 </template>
@@ -18,3 +18,10 @@ onMounted(() => {
 })
 
 </script>
+
+<style lang="sass">
+.repo-list
+  display: flex
+  flex-direction: row
+  align-items: flex-start
+</style>
