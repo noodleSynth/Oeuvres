@@ -46,7 +46,7 @@
 import type { GitDetails } from "@/services/models/GitDetails";
 import { computed, onActivated, onBeforeUnmount, onMounted, onUpdated, ref, watch } from "vue";
 import IndexDrawer from "./IndexDrawer.vue";
-import MatreialIcon from "@/common/MaterialIcon.vue";
+import MatreialIcon from "./common/MaterialIcon.vue";
 
 const root = ref<HTMLElement>()
 const isTouchingTop = ref(false)

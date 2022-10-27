@@ -1,22 +1,10 @@
 <script setup lang="ts">
+import Landing from './layouts/Landing.vue';
 
 </script>
 
 <template>
-  <main>
-    <nav>
-      <a href="/" class="h1 banner nav-item">Oeuvres</a>
-      <div class="navlinks">
-        <a href="#github" class="h2 nav-item">
-          <i class="icon fa-brands fa-github"></i>
-          <span>Github</span>
-        </a>
-      </div>
-    </nav>
-    <div class="body">
-      <router-view />
-    </div>
-  </main>
+  <Landing />
 </template>
 
 <style lang="sass">

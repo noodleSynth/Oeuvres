@@ -1,8 +1,12 @@
 <template>
   <div class="git card">
     <div class="repo-links">
-      <a class="repo-link" title="View on git" :href="repo.html_url"><i class="fa-brands fa-github"></i></a>
-      <router-link class="repo-link" title="View page" :to="{name: 'repo', params: { repo: repo.name }}"><i class="fa-solid fa-eye"></i> </router-link>
+      <a class="repo-link" title="View on Github" :href="repo.html_url">
+        <FontAwesomeIcon name="github" collection="brands" />
+      </a>
+      <router-link class="repo-link" title="View page" :to="{name: 'repo', params: { repo: repo.name }}">
+        <FontAwesomeIcon name="external-link" />
+      </router-link>
     </div>
     <div class="body">
       <div class="header">
@@ -21,6 +25,7 @@
 <script lang="ts" setup>
 import { formatDate } from "@/utils/Format";
 import type { GitDetails } from "@/services/models/GitDetails";
+import FontAwesomeIcon from "./common/FontAwesomeIcon.vue";
 
 
 const props = defineProps<{
@@ -41,6 +46,10 @@ const expantion_uid = crypto.randomUUID()
   display: flex
   flex-direction: column
   position: relative
+  @media (max-width: 900px)
+    max-width: 50%
+    width: auto
+    margin-top: 2em
   .repo-links
     position: absolute
     margin-top: -2.2em

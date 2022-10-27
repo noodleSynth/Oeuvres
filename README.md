@@ -2,6 +2,7 @@
 
 Whats an [Oeuvre?](https://www.oxfordreference.com/view/10.1093/oi/authority.20110803100246262#:~:text=The%20French%20word%20for%20a,writer's%20principal%20work%20or%20masterpiece.)
 
+Very much a work in progress. Let me know what you think of it sofar 
 ## Motivation
 I need a way to keep track of the things I do. This project serves exactly that purpose.
 
@@ -13,12 +14,11 @@ The frontend for the project.
 - for now...
 
 ## How to run it?
-Youll need the backend for it to render the markdown at all.
 But if you're committed to seeing it try and churn:
 - You will need to install [NPM](https://www.npmjs.com/)
 - Clone the repo into your desired directory
 - Navigate to it using your favorite terminal (bash?)
 - Run `npm i`
 - Run `npm run serve`
-- That should do it, the page should be visible on localhost
+- That should do it, the page should be visible on `localhost`
 
