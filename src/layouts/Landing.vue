@@ -13,7 +13,13 @@
           Oeuvres
         </h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae accumsan odio, ut pulvinar metus. Quisque hendrerit odio feugiat tincidunt sodales. Sed et ex vel sem blandit malesuada id at nulla. Nullam volutpat diam et molestie vulputate. Morbi aliquet ipsum quam, ac bibendum mi aliquet quis. Vivamus ornare magna sed tortor semper, nec maximus sem rutrum. Mauris ut dui eget leo lobortis hendrerit vitae ultricies tellus.
+          An Oeuver is a body of work. A collection of work done with explicit goals in a discipline or field.
+        </p>
+        <p>
+          This website serves as a catalogue/gallery of my personal and shared projects.
+        </p>
+        <p>
+          Still under development, be sure to check back often!
         </p>
       </div>
     </aside>
