@@ -1,8 +1,15 @@
 import type { GitDetails } from "./models/GitDetails";
+import { useUtilStore } from "@/stores/utilityStore";
 
 class GitService {
   getRepos(): Promise<GitDetails[]> {
-    return fetch(`https://api.github.com/users/${import.meta.env.VITE_GIT_USER}/repos`).then(e => e.json())
+    const utilStore = useUtilStore()
+    return fetch(`https://api.github.com/users/${import.meta.env.VITE_GIT_USER}/repos`).then(e => e.json()).then(
+      (r) =>
+        r.filter((e : GitDetails) => {
+          return !utilStore.repoExclusions.includes(e.clone_url);
+        })
+    );
   }
   getRepoDetails(repo: string): Promise<GitDetails> {
     return fetch(`https://api.github.com/repos/${import.meta.env.VITE_GIT_USER}/${repo}`)

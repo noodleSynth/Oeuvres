@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import Landing from './layouts/Landing.vue';
-
+import About from './layouts/About.vue'
+import Repos from './layouts/Repos.vue';
 </script>
 
 <template>
   <Landing />
+  <About />
+  <Repos />
 </template>
 
 <style lang="sass">

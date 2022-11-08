@@ -1,5 +1,17 @@
 <template>
-  <div class="git card">
+  <CardBoiler>
+    <template #head>
+      <span class="title">{{repo.name}}</span>
+      <a :href="repo.html_url" class="icon">
+          <i class="fa fa-brands fa-github" />
+      </a>
+    </template>
+    <template #body>
+      {{ repo.description }}
+    </template>
+  </CardBoiler>
+
+  <!-- <div class="git card">
     <div class="repo-links">
       <a class="repo-link" title="View on Github" :href="repo.html_url">
         <FontAwesomeIcon name="github" collection="brands" />
@@ -19,20 +31,18 @@
         {{ repo.description }}
       </p>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script lang="ts" setup>
 import { formatDate } from "@/utils/Format";
 import type { GitDetails } from "@/services/models/GitDetails";
-import FontAwesomeIcon from "./common/FontAwesomeIcon.vue";
+import CardBoiler from "./common/CardBoiler.vue";
 
 
 const props = defineProps<{
   repo: GitDetails;
 }>();
-
-const expantion_uid = crypto.randomUUID()
 
 </script>
 
