@@ -10,40 +10,15 @@
       {{ repo.description }}
     </template>
   </CardBoiler>
-
-  <!-- <div class="git card">
-    <div class="repo-links">
-      <a class="repo-link" title="View on Github" :href="repo.html_url">
-        <FontAwesomeIcon name="github" collection="brands" />
-      </a>
-      <router-link class="repo-link" title="View page" :to="{name: 'repo', params: { repo: repo.name }}">
-        <FontAwesomeIcon name="external-link" />
-      </router-link>
-    </div>
-    <div class="body">
-      <div class="header">
-        <router-link :to="{name: 'repo', params: { repo: repo.name }}" class="h2 title">{{ repo.name }}</router-link>
-        <div class="submenu">
-          <span class="datetime">{{ formatDate(repo.updated_at) }}</span>
-        </div>
-      </div>
-      <p class="body" v-if="repo.description">
-        {{ repo.description }}
-      </p>
-    </div>
-  </div> -->
 </template>
 
 <script lang="ts" setup>
-import { formatDate } from "@/utils/Format";
 import type { GitDetails } from "@/services/models/GitDetails";
 import CardBoiler from "./common/CardBoiler.vue";
 
-
-const props = defineProps<{
+defineProps<{
   repo: GitDetails;
 }>();
-
 </script>
 
 <style lang="sass">

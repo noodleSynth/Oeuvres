@@ -25,7 +25,7 @@
 
 <style lang="sass">
 .card
-  background-color: transparentize(darken($primary, 5), .5)
+  background-color: transparentize(darken($primary, 5), .35)
   padding: 10pt
   color: white
 

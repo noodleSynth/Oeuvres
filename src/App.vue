@@ -11,6 +11,11 @@ import Repos from './layouts/Repos.vue';
 </template>
 
 <style lang="sass">
+#app
+  scroll-snap-type: y mandatory
+  scroll-snap-align: start
+  max-height: 100vh
+  overflow-y: auto
 html
   background-color: $primary
   margin: 0px
